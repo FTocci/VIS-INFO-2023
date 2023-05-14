@@ -1,0 +1,70 @@
+[{
+	"Nome":"Bologna",
+	"Popolazione":"387.981",
+	"Superificie(km)":"140,86",
+	"Densità(abitanti/km)":"2.754",
+	"Altitudine(m s.l.m.)":"54"
+},
+{
+	"Nome":"Trento",
+	"Popolazione":"118.046",
+	"Superificie(km)":"157,87",
+	"Densità(abitanti/km)":"748",
+	"Altitudine(m s.l.m.)":"194"
+},
+{
+	"Nome":"Palermo",
+	"Popolazione":"630.167",
+	"Superificie(km)":"160,59",
+	"Densità(abitanti/km)":"3.924",
+	"Altitudine(m s.l.m.)":"14"
+},
+{
+	"Nome":"Reggio Calabria",
+	"Popolazione":"170.951",
+	"Superificie(km)":"239,04",
+	"Densità(abitanti/km)":"715",
+	"Altitudine(m s.l.m.)":"31"
+},
+{
+	"Nome":"Bari",
+	"Popolazione":"316.015",
+	"Superificie(km)":"117,41",
+	"Densità(abitanti/km)":"2.692",
+	"Altitudine(m s.l.m.)":"5"
+},
+{
+	"Nome":"Roma",
+	"Popolazione":"2.748.109",
+	"Superificie(km)":"1.287,24",
+	"Densità(abitanti/km)":"2.135",
+	"Altitudine(m s.l.m.)":"20"
+},
+{
+	"Nome":"Milano",
+	"Popolazione":"1.354.196",
+	"Superificie(km)":"181,68",
+	"Densità(abitanti/km)":"7.454",
+	"Altitudine(m s.l.m.)":"122"
+},
+{
+	"Nome":"Napoli",
+	"Popolazione":"913.462",
+	"Superificie(km)":"118,94",
+	"Densità(abitanti/km)":"7.680",
+	"Altitudine(m s.l.m.)":"17"
+},
+{
+	"Nome":"Firenze",
+	"Popolazione":"360.930",
+	"Superificie(km)":"102,32",
+	"Densità(abitanti/km)":"3.528",
+	"Altitudine(m s.l.m.)":"50"
+},
+{
+	"Nome":"Torino",
+	"Popolazione":"841.600",
+	"Superificie(km)":"130,06",
+	"Densità(abitanti/km)":"6.471",
+	"Altitudine(m.s.l.m.)":"239"
+}]
