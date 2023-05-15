@@ -1,57 +1,103 @@
 [{
 	"Nome":"Bologna",
+<<<<<<< Updated upstream
 	"Popolazione":"387981",
 	"Superificie(km)":"140,86",
 	"Densità(abitanti/km)":"2754",
+=======
+	"Popolazione":"387.981",
+	"Superficie(km)":"140,86",
+	"Densità(abitanti/km)":"2.754",
+>>>>>>> Stashed changes
 	"Altitudine(m s.l.m.)":"54"
 },
 {
 	"Nome":"Trento",
+<<<<<<< Updated upstream
 	"Popolazione":"118046",
 	"Superificie(km)":"157,87",
+=======
+	"Popolazione":"118.046",
+	"Superficie(km)":"157,87",
+>>>>>>> Stashed changes
 	"Densità(abitanti/km)":"748",
 	"Altitudine(m s.l.m.)":"194"
 },
 {
 	"Nome":"Palermo",
+<<<<<<< Updated upstream
 	"Popolazione":"630167",
 	"Superificie(km)":"160,59",
 	"Densità(abitanti/km)":"3924",
+=======
+	"Popolazione":"630.167",
+	"Superficie(km)":"160,59",
+	"Densità(abitanti/km)":"3.924",
+>>>>>>> Stashed changes
 	"Altitudine(m s.l.m.)":"14"
 },
 {
 	"Nome":"Reggio Calabria",
+<<<<<<< Updated upstream
 	"Popolazione":"170951",
 	"Superificie(km)":"239,04",
+=======
+	"Popolazione":"170.951",
+	"Superficie(km)":"239,04",
+>>>>>>> Stashed changes
 	"Densità(abitanti/km)":"715",
 	"Altitudine(m s.l.m.)":"31"
 },
 {
 	"Nome":"Bari",
+<<<<<<< Updated upstream
 	"Popolazione":"316015",
 	"Superificie(km)":"117,41",
 	"Densità(abitanti/km)":"2692",
+=======
+	"Popolazione":"316.015",
+	"Superficie(km)":"117,41",
+	"Densità(abitanti/km)":"2.692",
+>>>>>>> Stashed changes
 	"Altitudine(m s.l.m.)":"5"
 },
 {
 	"Nome":"Roma",
+<<<<<<< Updated upstream
 	"Popolazione":"2748109",
 	"Superificie(km)":"1287,24",
 	"Densità(abitanti/km)":"2135",
+=======
+	"Popolazione":"2.748.109",
+	"Superficie(km)":"1.287,24",
+	"Densità(abitanti/km)":"2.135",
+>>>>>>> Stashed changes
 	"Altitudine(m s.l.m.)":"20"
 },
 {
 	"Nome":"Milano",
+<<<<<<< Updated upstream
 	"Popolazione":"1354196",
 	"Superificie(km)":"181,68",
 	"Densità(abitanti/km)":"7454",
+=======
+	"Popolazione":"1.354.196",
+	"Superficie(km)":"181,68",
+	"Densità(abitanti/km)":"7.454",
+>>>>>>> Stashed changes
 	"Altitudine(m s.l.m.)":"122"
 },
 {
 	"Nome":"Napoli",
+<<<<<<< Updated upstream
 	"Popolazione":"913462",
 	"Superificie(km)":"118,94",
 	"Densità(abitanti/km)":"7680",
+=======
+	"Popolazione":"913.462",
+	"Superficie(km)":"118,94",
+	"Densità(abitanti/km)":"7.680",
+>>>>>>> Stashed changes
 	"Altitudine(m s.l.m.)":"17"
 },
 {
