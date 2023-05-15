@@ -7,5 +7,7 @@ div.ridge {}
 }
 .Column {
     display: table-cell;
-    border-style: ridge;
+    border-style: groove;
+	display: inline-block;
+	font-family: Georgia, serif;
 }
