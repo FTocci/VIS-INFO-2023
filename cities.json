@@ -2,69 +2,69 @@
 	"Nome":"Bologna",
 	"Popolazione":"387981",
 	"Superficie":"140,86",
-	"Densità(abitanti/km)":"2754",
-	"Altitudine(m s.l.m.)":"54"
+	"Densità":"2754",
+	"Altitudine":"54"
 },
 {
 	"Nome":"Trento",
 	"Popolazione":"118046",
 	"Superficie":"157,87",
-	"Densità(abitanti/km)":"748",
-	"Altitudine(m s.l.m.)":"194"
+	"Densità":"748",
+	"Altitudine":"194"
 },
 {
 	"Nome":"Palermo",
 	"Popolazione":"630167",
 	"Superficie":"160,59",
-	"Densità(abitanti/km)":"3924",
-	"Altitudine(m s.l.m.)":"14"
+	"Densità":"3924",
+	"Altitudine":"14"
 },
 {
 	"Nome":"Reggio Calabria",
 	"Popolazione":"170951",
 	"Superficie":"239,04",
-	"Densità(abitanti/km)":"715",
-	"Altitudine(m s.l.m.)":"31"
+	"Densità":"715",
+	"Altitudine":"31"
 },
 {
 	"Nome":"Bari",
 	"Popolazione":"316015",
 	"Superficie":"117,41",
-	"Densità(abitanti/km)":"2692",
-	"Altitudine(m s.l.m.)":"5"
+	"Densità":"2692",
+	"Altitudine":"5"
 },
 {
 	"Nome":"Roma",
 	"Popolazione":"2748109",
 	"Superficie":"1287,24",
-	"Densità(abitanti/km)":"2135",
-	"Altitudine(m s.l.m.)":"20"
+	"Densità":"2135",
+	"Altitudine":"20"
 },
 {
 	"Nome":"Milano",
 	"Popolazione":"1354196",
 	"Superficie":"181,68",
-	"Densità(abitanti/km)":"7454",
-	"Altitudine(m s.l.m.)":"122"
+	"Densità":"7454",
+	"Altitudine":"122"
 },
 {
 	"Nome":"Napoli",
 	"Popolazione":"913462",
 	"Superficie":"118,94",
-	"Densità(abitanti/km)":"7680",
-	"Altitudine(m s.l.m.)":"17"
+	"Densità":"7680",
+	"Altitudine":"17"
 },
 {
 	"Nome":"Firenze",
 	"Popolazione":"360930",
 	"Superficie":"102,32",
-	"Densità(abitanti/km)":"3528",
-	"Altitudine(m s.l.m.)":"50"
+	"Densità":"3528",
+	"Altitudine":"50"
 },
 {
 	"Nome":"Torino",
 	"Popolazione":"841600",
 	"Superficie":"130,06",
-	"Densità(abitanti/km)":"6471",
-	"Altitudine(m.s.l.m.)":"239"
+	"Densità":"6471",
+	"Altitudine":"239"
 }]
