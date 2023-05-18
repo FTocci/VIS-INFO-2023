@@ -11,24 +11,25 @@
 	<link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
-
-<div class="Row">
-    <div id="div_popol" class="Column"><p align="center">Popolazione</p></div>
-    <div id="div_superf" class="Column"><p align="center">Superficie(km)</p></div>
-</div>
-<div class="Row">
-    <div id="div_dens" class="Column"><p align="center">Densità(abitanti/km)</p></div>
-    <div class="Column"><p align="center">Altitudine(m s.l.m.)</p></div>
+<div style="display: flex; justify-content: center; align-items: center;">
+  <div class="Row">
+    <div id="div_popol" class="Column"><p style="margin-left: 35%; font-size: 18px;">Popolazione</p></div>
+    <div id="div_superf" class="Column"><p style="margin-left: 35%; font-size: 18px;">Superficie(km)</p></div>
+  </div>
+  <div class="Row">
+    <div id="div_densita" class="Column"><p style="margin-left: 35%; font-size: 18px;">Densità(abitanti/km)</p></div>
+    <div id="div_altitudine" class="Column"><p style="margin-left: 35%; font-size: 18px;">Altitudine(m s.l.m.)</p></div>
+  </div>
 </div>
 
 <script>
-
-
-//1 Grafico
 // set the dimensions and margins of the graph
-var margin = {top: 15, right: 30, bottom: 70, left: 80},
-    width = 360 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+var margin = {top: 15, right: 50, bottom: 70, left: 80},
+    width = 500 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
+
+//----------------------------------------------------------------------- 1 Grafico ---------------------------------------------------------------------------------------------------
+
 
 // append the svg object to the body of the page
 var svg = d3.select("#div_popol")
@@ -61,8 +62,10 @@ var y = d3.scaleLinear()
 svg.append("g")
   .call(d3.axisLeft(y));
 
+var formatoNumero = new Intl.NumberFormat('it-IT', { style: 'decimal', maximumFractionDigits: 2 });
+
 // Bars
-svg.selectAll("mybar")
+var bars = svg.selectAll("mybar")
   .data(data)
   .enter()
   .append("rect")
@@ -71,14 +74,25 @@ svg.selectAll("mybar")
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.Popolazione); })
     .attr("fill", "#69b3a2")
+    .on("mouseover", function(d) {
+      d3.select(this).attr("fill", "DarkCyan"); // Cambia il colore della barra quando ci passi con il mouse sopra
+      svg.append("text")
+        .attr("class", "valore-barra")
+        .attr("x", x(d.Nome) + x.bandwidth() / 2)
+        .attr("y", y(d.Popolazione) - 5)
+        .attr("text-anchor", "middle")
+        .text(formatoNumero.format(d.Popolazione));
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
+      svg.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
+    });
+});
 
-})
+
 
 //----------------------------------------------------------------------- 2 Grafico ---------------------------------------------------------------------------------------------------
-// set the dimensions and margins of the graph
-var margin = {top: 15, right: 30, bottom: 70, left: 80},
-    width = 360 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+
 
 // append the svg object to the body of the page
 var svg2 = d3.select("#div_superf")
@@ -121,6 +135,141 @@ svg2.selectAll("rect")
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.Superficie); })
     .attr("fill", "#69b3a2")
+    .on("mouseover", function(d) {
+      d3.select(this).attr("fill", "DarkCyan"); // Cambia il colore della barra quando ci passi con il mouse sopra
+      svg2.append("text")
+        .attr("class", "valore-barra")
+        .attr("x", x(d.Nome) + x.bandwidth() / 2)
+        .attr("y", y(d.Superficie) - 5)
+        .attr("text-anchor", "middle")
+        .text(d.Superficie);
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
+      svg2.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
+    });
+
+})
+
+
+//----------------------------------------------------------------------- 3 Grafico ---------------------------------------------------------------------------------------------------
+
+
+// append the svg object to the body of the page
+var svg3 = d3.select("#div_densita")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Parse the Data
+d3.json("https://raw.githubusercontent.com/FTocci/VIS-INFO-2023/main/cities.json", function(data) {
+
+// X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(data.map(function(d) { return d.Nome; }))
+  .padding(0.2);
+svg3.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+  .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+// Add Y axis
+var y = d3.scaleLinear()
+  .domain([0, 8000])
+  .range([ height, 0]);
+svg3.append("g")
+  .call(d3.axisLeft(y));
+
+// Bars
+svg3.selectAll("rect")
+  .data(data)
+  .enter()
+  .append("rect")
+    .attr("x", function(d) { return x(d.Nome); })
+    .attr("y", function(d) { return y(d.Densità); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return height - y(d.Densità); })
+    .attr("fill", "#69b3a2")
+    .on("mouseover", function(d) {
+      d3.select(this).attr("fill", "DarkCyan"); // Cambia il colore della barra quando ci passi con il mouse sopra
+      svg3.append("text")
+        .attr("class", "valore-barra")
+        .attr("x", x(d.Nome) + x.bandwidth() / 2)
+        .attr("y", y(d.Densità) - 5)
+        .attr("text-anchor", "middle")
+        .text(d.Densità);
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
+      svg3.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
+    });
+
+})
+
+
+//----------------------------------------------------------------------- 4 Grafico ---------------------------------------------------------------------------------------------------
+
+
+// append the svg object to the body of the page
+var svg4 = d3.select("#div_altitudine")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Parse the Data
+d3.json("https://raw.githubusercontent.com/FTocci/VIS-INFO-2023/main/cities.json", function(data) {
+
+// X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(data.map(function(d) { return d.Nome; }))
+  .padding(0.2);
+svg4.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+  .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+// Add Y axis
+var y = d3.scaleLinear()
+  .domain([0, 250])
+  .range([ height, 0]);
+svg4.append("g")
+  .call(d3.axisLeft(y));
+
+// Bars
+svg4.selectAll("rect")
+  .data(data)
+  .enter()
+  .append("rect")
+    .attr("x", function(d) { return x(d.Nome); })
+    .attr("y", function(d) { return y(d.Altitudine); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return height - y(d.Altitudine); })
+    .attr("fill", "#69b3a2")
+    .on("mouseover", function(d) {
+      d3.select(this).attr("fill", "DarkCyan"); // Cambia il colore della barra quando ci passi con il mouse sopra
+      svg4.append("text")
+        .attr("class", "valore-barra")
+        .attr("x", x(d.Nome) + x.bandwidth() / 2)
+        .attr("y", y(d.Altitudine) - 5)
+        .attr("text-anchor", "middle")
+        .text(d.Altitudine);
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
+      svg4.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
+    });
 
 })
 

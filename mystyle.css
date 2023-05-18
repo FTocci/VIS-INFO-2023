@@ -1,13 +1,17 @@
-div.ridge {}
+body{
+    font-family: Georgia, serif;
+}
+
 .Row {
     display: table;
-    width: 100%; /*Optional*/
     table-layout: fixed; /*Optional*/
     border-spacing: 10px; /*Optional*/
+    margin-left: 5%;
+    
 }
 .Column {
-    display: table-cell;
-    border-style: groove;
-	display: inline-block;
-	font-family: Georgia, serif;
+    border: 1px solid black;
+    display: inline-block;
+    margin-top: 5%;
+    margin-left: 50px;
 }
