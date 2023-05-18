@@ -1,70 +1,70 @@
 [{
 	"Nome":"Bologna",
 	"Popolazione":"387981",
-	"Superficie":"140,86",
+	"Superficie":"140",
 	"Densità":"2754",
 	"Altitudine":"54"
 },
 {
 	"Nome":"Trento",
 	"Popolazione":"118046",
-	"Superficie":"157,87",
+	"Superficie":"157",
 	"Densità":"748",
 	"Altitudine":"194"
 },
 {
 	"Nome":"Palermo",
 	"Popolazione":"630167",
-	"Superficie":"160,59",
+	"Superficie":"160",
 	"Densità":"3924",
 	"Altitudine":"14"
 },
 {
 	"Nome":"Reggio Calabria",
 	"Popolazione":"170951",
-	"Superficie":"239,04",
+	"Superficie":"239",
 	"Densità":"715",
 	"Altitudine":"31"
 },
 {
 	"Nome":"Bari",
 	"Popolazione":"316015",
-	"Superficie":"117,41",
+	"Superficie":"117",
 	"Densità":"2692",
 	"Altitudine":"5"
 },
 {
 	"Nome":"Roma",
 	"Popolazione":"2748109",
-	"Superficie":"1287,24",
+	"Superficie":"1287",
 	"Densità":"2135",
 	"Altitudine":"20"
 },
 {
 	"Nome":"Milano",
 	"Popolazione":"1354196",
-	"Superficie":"181,68",
+	"Superficie":"181",
 	"Densità":"7454",
 	"Altitudine":"122"
 },
 {
 	"Nome":"Napoli",
 	"Popolazione":"913462",
-	"Superficie":"118,94",
+	"Superficie":"118",
 	"Densità":"7680",
 	"Altitudine":"17"
 },
 {
 	"Nome":"Firenze",
 	"Popolazione":"360930",
-	"Superficie":"102,32",
+	"Superficie":"102",
 	"Densità":"3528",
 	"Altitudine":"50"
 },
 {
 	"Nome":"Torino",
 	"Popolazione":"841600",
-	"Superficie":"130,06",
+	"Superficie":"130",
 	"Densità":"6471",
 	"Altitudine":"239"
 }]
