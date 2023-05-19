@@ -25,8 +25,9 @@
 <script>
 // set the dimensions and margins of the graph
 var margin = {top: 15, right: 50, bottom: 70, left: 80},
-    width = 500 - margin.left - margin.right,
+    width = 550 - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
+
 
 //----------------------------------------------------------------------- 1 Grafico ---------------------------------------------------------------------------------------------------
 
@@ -49,6 +50,7 @@ var x = d3.scaleBand()
   .domain(data.map(function(d) { return d.Nome; }))
   .padding(0.2);
 svg.append("g")
+  .attr("class", "x-axis")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x))
   .selectAll("text")
@@ -64,11 +66,13 @@ svg.append("g")
 
 var formatoNumero = new Intl.NumberFormat('it-IT', { style: 'decimal', maximumFractionDigits: 2 });
 
+
 // Bars
-var bars = svg.selectAll("mybar")
+var bars = svg.selectAll(".mybar")
   .data(data)
   .enter()
   .append("rect")
+	.attr("class", "mybar")
     .attr("x", function(d) { return x(d.Nome); })
     .attr("y", function(d) { return y(d.Popolazione); })
     .attr("width", x.bandwidth())
@@ -86,7 +90,62 @@ var bars = svg.selectAll("mybar")
     .on("mouseout", function(d) {
       d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
       svg.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
-    });
+    })
+	.on("click", function() {
+		 // Ordina i dati per popolazione in modo crescente
+		data.sort(function(a, b) {
+			return a.Popolazione - b.Popolazione;
+		});
+
+		// Aggiorna il dominio dell'asse X
+		x.domain(data.map(function(d) { return d.Nome; }));
+
+		// Aggiorna la posizione delle barre con transizioni animate
+		svg.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+		
+		svg2.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg2.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+		
+		svg3.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg3.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+			
+		svg4.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg4.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+	});
+	
 });
 
 
@@ -112,6 +171,7 @@ var x = d3.scaleBand()
   .domain(data.map(function(d) { return d.Nome; }))
   .padding(0.2);
 svg2.append("g")
+  .attr("class", "x-axis")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x))
   .selectAll("text")
@@ -130,6 +190,7 @@ svg2.selectAll("rect")
   .data(data)
   .enter()
   .append("rect")
+	.attr("class", "mybar")
     .attr("x", function(d) { return x(d.Nome); })
     .attr("y", function(d) { return y(d.Superficie); })
     .attr("width", x.bandwidth())
@@ -140,14 +201,68 @@ svg2.selectAll("rect")
       svg2.append("text")
         .attr("class", "valore-barra")
         .attr("x", x(d.Nome) + x.bandwidth() / 2)
-        .attr("y", y(d.Superficie) - 5)
+		.attr("y", y(d.Superficie) - 5)
         .attr("text-anchor", "middle")
         .text(d.Superficie);
     })
     .on("mouseout", function(d) {
       d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
       svg2.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
-    });
+    })
+	.on("click", function() {
+		 // Ordina i dati per popolazione in modo crescente
+		data.sort(function(a, b) {
+			return a.Superficie - b.Superficie;
+		});
+
+		// Aggiorna il dominio dell'asse X
+		x.domain(data.map(function(d) { return d.Nome; }));
+
+		// Aggiorna la posizione delle barre con transizioni animate
+		svg.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+		
+		svg2.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg2.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+		
+		svg3.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg3.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+			
+		svg4.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg4.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+	});
 
 })
 
@@ -173,6 +288,7 @@ var x = d3.scaleBand()
   .domain(data.map(function(d) { return d.Nome; }))
   .padding(0.2);
 svg3.append("g")
+  .attr("class", "x-axis")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x))
   .selectAll("text")
@@ -191,6 +307,7 @@ svg3.selectAll("rect")
   .data(data)
   .enter()
   .append("rect")
+	.attr("class", "mybar")
     .attr("x", function(d) { return x(d.Nome); })
     .attr("y", function(d) { return y(d.Densità); })
     .attr("width", x.bandwidth())
@@ -208,7 +325,61 @@ svg3.selectAll("rect")
     .on("mouseout", function(d) {
       d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
       svg3.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
-    });
+    })
+	.on("click", function() {
+		 // Ordina i dati per popolazione in modo crescente
+		data.sort(function(a, b) {
+			return a.Densità - b.Densità;
+		});
+
+		// Aggiorna il dominio dell'asse X
+		x.domain(data.map(function(d) { return d.Nome; }));
+
+		// Aggiorna la posizione delle barre con transizioni animate
+		svg.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+		
+		svg2.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg2.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+		
+		svg3.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg3.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+			
+		svg4.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg4.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+	});
 
 })
 
@@ -234,6 +405,7 @@ var x = d3.scaleBand()
   .domain(data.map(function(d) { return d.Nome; }))
   .padding(0.2);
 svg4.append("g")
+  .attr("class", "x-axis")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x))
   .selectAll("text")
@@ -252,6 +424,7 @@ svg4.selectAll("rect")
   .data(data)
   .enter()
   .append("rect")
+	.attr("class", "mybar")
     .attr("x", function(d) { return x(d.Nome); })
     .attr("y", function(d) { return y(d.Altitudine); })
     .attr("width", x.bandwidth())
@@ -269,7 +442,61 @@ svg4.selectAll("rect")
     .on("mouseout", function(d) {
       d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
       svg4.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
-    });
+    })
+	.on("click", function() {
+		 // Ordina i dati per popolazione in modo crescente
+		data.sort(function(a, b) {
+			return a.Altitudine - b.Altitudine;
+		});
+
+		// Aggiorna il dominio dell'asse X
+		x.domain(data.map(function(d) { return d.Nome; }));
+
+		// Aggiorna la posizione delle barre con transizioni animate
+		svg.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+		
+		svg2.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg2.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+		
+		svg3.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg3.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+			
+		svg4.selectAll(".mybar")
+			.transition()
+			.duration(750)
+			.attr("x", function(d) { return x(d.Nome); });
+
+		// Aggiorna l'asse X con transizione animata
+		svg4.select(".x-axis")
+			.transition()
+			.duration(750)
+			.call(d3.axisBottom(x));
+	});
 
 })
 
