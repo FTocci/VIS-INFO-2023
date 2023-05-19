@@ -11,22 +11,27 @@
 	<link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
+<div class="title-container">
+    <h1 class="title">VIS-INFO Project</h1>
+</div>
+
 <div style="display: flex; justify-content: center; align-items: center;">
   <div class="Row">
-    <div id="div_popol" class="Column"><p style="margin-left: 35%; font-size: 18px;">Popolazione</p></div>
-    <div id="div_superf" class="Column"><p style="margin-left: 35%; font-size: 18px;">Superficie(km)</p></div>
+    <div id="div_popol" class="Column"><p>Popolazione</p></div>
+    <div id="div_superf" class="Column"><p>Superficie(km)</p></div>
   </div>
   <div class="Row">
-    <div id="div_densita" class="Column"><p style="margin-left: 35%; font-size: 18px;">Densità(abitanti/km)</p></div>
-    <div id="div_altitudine" class="Column"><p style="margin-left: 35%; font-size: 18px;">Altitudine(m s.l.m.)</p></div>
+    <div id="div_densita" class="Column"><p>Densità(abitanti/km)</p></div>
+    <div id="div_altitudine" class="Column"><p>Altitudine(m s.l.m.)</p></div>
   </div>
 </div>
 
 <script>
+
 // set the dimensions and margins of the graph
 var margin = {top: 15, right: 50, bottom: 70, left: 80},
-    width = 550 - margin.left - margin.right,
-    height = 450 - margin.top - margin.bottom;
+    width = 500 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 
 //----------------------------------------------------------------------- 1 Grafico ---------------------------------------------------------------------------------------------------
@@ -40,6 +45,7 @@ var svg = d3.select("#div_popol")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+  
 
 // Parse the Data
 d3.json("https://raw.githubusercontent.com/FTocci/VIS-INFO-2023/main/cities.json", function(data) {
@@ -78,20 +84,25 @@ var bars = svg.selectAll(".mybar")
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.Popolazione); })
     .attr("fill", "#69b3a2")
-    .on("mouseover", function(d) {
+    .on("mouseover", function(d,i,nodes) {
       d3.select(this).attr("fill", "DarkCyan"); // Cambia il colore della barra quando ci passi con il mouse sopra
-      svg.append("text")
+      var currentBar = d3.select(nodes[i]);
+	  var xPosition = parseFloat(currentBar.attr("x")) + x.bandwidth() / 2;
+	  var yPosition = parseFloat(currentBar.attr("y")) - 5;
+	  svg.append("text")
         .attr("class", "valore-barra")
-        .attr("x", x(d.Nome) + x.bandwidth() / 2)
-        .attr("y", y(d.Popolazione) - 5)
+        .attr("x", xPosition)
+		.attr("y", yPosition)
         .attr("text-anchor", "middle")
         .text(formatoNumero.format(d.Popolazione));
     })
     .on("mouseout", function(d) {
       d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
       svg.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
-    })
-	.on("click", function() {
+    });
+		
+	d3.select("#div_popol")
+		.on("click", function() {
 		 // Ordina i dati per popolazione in modo crescente
 		data.sort(function(a, b) {
 			return a.Popolazione - b.Popolazione;
@@ -126,7 +137,7 @@ var bars = svg.selectAll(".mybar")
 		svg3.selectAll(".mybar")
 			.transition()
 			.duration(750)
-			.attr("x", function(d) { return x(d.Nome); });
+			.attr("x", function(d) { return x(d.Nome); })
 
 		// Aggiorna l'asse X con transizione animata
 		svg3.select(".x-axis")
@@ -144,8 +155,7 @@ var bars = svg.selectAll(".mybar")
 			.transition()
 			.duration(750)
 			.call(d3.axisBottom(x));
-	});
-	
+	})
 });
 
 
@@ -196,20 +206,25 @@ svg2.selectAll("rect")
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.Superficie); })
     .attr("fill", "#69b3a2")
-    .on("mouseover", function(d) {
+    .on("mouseover", function(d,i,nodes) {
       d3.select(this).attr("fill", "DarkCyan"); // Cambia il colore della barra quando ci passi con il mouse sopra
-      svg2.append("text")
+      var currentBar = d3.select(nodes[i]);
+	  var xPosition = parseFloat(currentBar.attr("x")) + x.bandwidth() / 2;
+	  var yPosition = parseFloat(currentBar.attr("y")) - 5;
+	  svg2.append("text")
         .attr("class", "valore-barra")
-        .attr("x", x(d.Nome) + x.bandwidth() / 2)
-		.attr("y", y(d.Superficie) - 5)
+        .attr("x", xPosition)
+		.attr("y", yPosition)
         .attr("text-anchor", "middle")
         .text(d.Superficie);
     })
     .on("mouseout", function(d) {
       d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
       svg2.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
-    })
-	.on("click", function() {
+    });
+	
+	d3.select("#div_superf")
+		.on("click", function() {
 		 // Ordina i dati per popolazione in modo crescente
 		data.sort(function(a, b) {
 			return a.Superficie - b.Superficie;
@@ -262,8 +277,7 @@ svg2.selectAll("rect")
 			.transition()
 			.duration(750)
 			.call(d3.axisBottom(x));
-	});
-
+	})
 })
 
 
@@ -313,20 +327,25 @@ svg3.selectAll("rect")
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.Densità); })
     .attr("fill", "#69b3a2")
-    .on("mouseover", function(d) {
+    .on("mouseover", function(d,i,nodes) {
       d3.select(this).attr("fill", "DarkCyan"); // Cambia il colore della barra quando ci passi con il mouse sopra
-      svg3.append("text")
+      var currentBar = d3.select(nodes[i]);
+	  var xPosition = parseFloat(currentBar.attr("x")) + x.bandwidth() / 2;
+	  var yPosition = parseFloat(currentBar.attr("y")) - 5;
+	  svg3.append("text")
         .attr("class", "valore-barra")
-        .attr("x", x(d.Nome) + x.bandwidth() / 2)
-        .attr("y", y(d.Densità) - 5)
+        .attr("x", xPosition)
+		.attr("y", yPosition)
         .attr("text-anchor", "middle")
         .text(d.Densità);
     })
     .on("mouseout", function(d) {
       d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
       svg3.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
-    })
-	.on("click", function() {
+    });
+	
+	d3.select("#div_densita")
+		.on("click", function() {
 		 // Ordina i dati per popolazione in modo crescente
 		data.sort(function(a, b) {
 			return a.Densità - b.Densità;
@@ -379,8 +398,7 @@ svg3.selectAll("rect")
 			.transition()
 			.duration(750)
 			.call(d3.axisBottom(x));
-	});
-
+	})
 })
 
 
@@ -430,20 +448,25 @@ svg4.selectAll("rect")
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.Altitudine); })
     .attr("fill", "#69b3a2")
-    .on("mouseover", function(d) {
+    .on("mouseover", function(d,i,nodes) {
       d3.select(this).attr("fill", "DarkCyan"); // Cambia il colore della barra quando ci passi con il mouse sopra
-      svg4.append("text")
+      var currentBar = d3.select(nodes[i]);
+	  var xPosition = parseFloat(currentBar.attr("x")) + x.bandwidth() / 2;
+	  var yPosition = parseFloat(currentBar.attr("y")) - 5;
+	  svg4.append("text")
         .attr("class", "valore-barra")
-        .attr("x", x(d.Nome) + x.bandwidth() / 2)
-        .attr("y", y(d.Altitudine) - 5)
+        .attr("x", xPosition)
+		.attr("y", yPosition)
         .attr("text-anchor", "middle")
         .text(d.Altitudine);
     })
     .on("mouseout", function(d) {
       d3.select(this).attr("fill", "#69b3a2"); // Ripristina il colore originale della barra quando il mouse esce
       svg4.select(".valore-barra").remove(); // Rimuovi il testo quando il mouse esce dalla barra
-    })
-	.on("click", function() {
+    });
+	
+	d3.select("#div_altitudine")
+			.on("click", function() {
 		 // Ordina i dati per popolazione in modo crescente
 		data.sort(function(a, b) {
 			return a.Altitudine - b.Altitudine;
@@ -496,8 +519,7 @@ svg4.selectAll("rect")
 			.transition()
 			.duration(750)
 			.call(d3.axisBottom(x));
-	});
-
+	})
 })
 
 </script>
