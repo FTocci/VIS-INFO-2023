@@ -1,19 +1,20 @@
 body{
     font-family: Georgia, serif;
+	background-color: #f2f2f2;
 }
 
 .Row {
     display: table;
     table-layout: fixed; /*Optional*/
-    border-spacing: 10px; /*Optional*/
     margin-left: 5%;
     
 }
 .Column {
     border: 1px solid black;
     display: inline-block;
-    margin-top: 5%;
+    margin-bottom: 3%;
     margin-left: 50px;
+	text-align:center;
 }
 
 .title-container {
@@ -21,17 +22,15 @@ body{
       justify-content: center;
       align-items: center;
       text-align: center;
+	  margin-bottom: 0px;
     }
 
 .title {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: bold;
 }
 
-p {
-  text-align: center;
-  font-size: 18px;
-}
+
 
 .button {
       display: flex;

@@ -13,23 +13,24 @@
     <h1 class="title">VIS-INFO Project</h1>
 </div>
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <div class="Row">
+<div id="megaDiv" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+  <div style="flex: 1 1 100%; max-width: 100%; margin-top: 0px;">
     <div id="div_popol" class="Column"><p>Popolazione</p></div>
-    <div id="div_superf" class="Column"><p>Superficie(km^2)</p></div>
-  </div>
-  <div class="Row">
-    <div id="div_densita" class="Column"><p>Densità(abitanti/km^2)</p></div>
-    <div id="div_altitudine" class="Column"><p>Altitudine(m s.l.m.)</p></div>
+    <div id="div_superf" class="Column"><p>Superficie[km^2]</p></div>
+ 
+    <div id="div_densita" class="Column"><p>Densità[abitanti/km^2]</p></div>
+    <div id="div_altitudine" class="Column"><p>Altitudine[m s.l.m.]</p></div>
   </div>
 </div>
 
 <script>
+var larghezzaGrafico=window.innerWidth*0.4;
+var altezzaGrafico=window.innerHeight*0.5;
 
 // set the dimensions and margins of the graph
 var margin = {top: 15, right: 50, bottom: 70, left: 80},
-    width = 500 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = larghezzaGrafico - margin.left - margin.right,
+    height = altezzaGrafico - margin.top - margin.bottom;
 
 
 //----------------------------------------------------------------------- 1 Grafico ---------------------------------------------------------------------------------------------------
@@ -464,7 +465,7 @@ var maxYAltitudine = getMaxValue(data, "Altitudine");
 
 // Add Y axis
 var y = d3.scaleLinear()
-  .domain([0, maxYAltitudine+100])
+  .domain([0, maxYAltitudine+10])
   .range([ height, 0]);
 svg4.append("g")
   .call(d3.axisLeft(y));
